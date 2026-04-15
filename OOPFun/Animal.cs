@@ -8,10 +8,29 @@ namespace OOPFun
 {
     public class Animal
     {
-        public string Name { get; set; } = "Anonymous";
+        public string Name { get; set; } //= "Anonymous";
         //private int limbCount = 4;
-        public string Colour { get; set; } = "Brown";
-        public int Health { get; set; } = 100;
+        public string Colour { get; set; } //= "Brown";
+        public int Health { get; set; } //= 100;
+        public static int Counter { get; set; } //static ~ Shared
+
+        public Animal(string name = "Anonymous", string colour = "Brown", int limbCount = 4)
+        {
+            Name = name;
+            Colour = colour;
+            LimbCount = limbCount;
+            Counter++;
+        }
+
+        static Animal()
+        {
+            Counter = 0;
+        }
+
+        //public Animal():this("Anonymous", "Brown", 4)
+        //{
+
+        //}
 
         // The Java Solution
         //public int GetLimbCount(){
@@ -61,6 +80,11 @@ namespace OOPFun
         public string Move(int distance, string direction="up")
         {
             return $"I'm a {Colour} animal called {Name} using some of my {LimbCount} limbs to move {direction} for {distance} metres";
+        }
+
+        public static string GetCounter()
+        {
+            return $"{Counter} animals have been created so far!";
         }
     }
 }
